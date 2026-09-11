@@ -1,0 +1,1284 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #05070b;
+    color: #ffffff;
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(3, 6, 12, 0.78),
+            rgba(3, 6, 12, 0.94)
+        ),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=90");
+
+    background-size: cover;
+    background-position: center;
+
+    z-index: -3;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255, 50, 20, 0.05),
+            transparent 70%
+        );
+
+    z-index: -2;
+}
+
+.bg-overlay {
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(4, 6, 11, 0.82);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(255, 70, 20, 0.25);
+
+    z-index: 1000;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+
+    font-family: "Orbitron", sans-serif;
+    font-weight: 900;
+
+    line-height: 0.9;
+}
+
+.logo span {
+    color: #ff3d18;
+    font-size: 23px;
+
+    text-shadow:
+        0 0 10px rgba(255, 61, 24, 0.7);
+}
+
+.logo small {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #fff;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    position: relative;
+
+    color: #c9c9c9;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #ff4b25;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -9px;
+
+    width: 0;
+    height: 2px;
+
+    background: #ff4b25;
+
+    box-shadow: 0 0 10px #ff4b25;
+
+    transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+.menu-btn {
+    display: none;
+
+    background: none;
+    border: none;
+
+    color: white;
+    font-size: 27px;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 140px 9% 80px;
+
+    position: relative;
+}
+
+.hero-content {
+    width: 650px;
+}
+
+.tag {
+    display: inline-block;
+
+    padding: 9px 16px;
+
+    border: 1px solid #ff4b25;
+
+    color: #ff704f;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    background: rgba(255, 60, 20, 0.06);
+
+    box-shadow: 0 0 25px rgba(255, 60, 20, 0.08);
+
+    animation: fadeUp 0.8s ease;
+}
+
+.hero h1 {
+    margin-top: 25px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: clamp(48px, 7vw, 92px);
+
+    line-height: 0.95;
+
+    font-weight: 900;
+
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    display: block;
+
+    color: #ff431c;
+
+    text-shadow:
+        0 0 15px rgba(255, 67, 28, 0.4),
+        0 0 40px rgba(255, 67, 28, 0.15);
+}
+
+.hero h2 {
+    margin-top: 22px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 17px;
+
+    letter-spacing: 5px;
+
+    color: #eeeeee;
+}
+
+.hero p {
+    max-width: 600px;
+
+    margin-top: 20px;
+
+    color: #aaa;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+
+    margin-top: 32px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 50px;
+
+    padding: 0 25px;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    transition: 0.3s;
+}
+
+.btn.primary {
+    color: white;
+    background: #ff401c;
+
+    box-shadow:
+        0 0 20px rgba(255, 64, 28, 0.25);
+}
+
+.btn.primary:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 35px rgba(255, 64, 28, 0.5);
+}
+
+.btn.secondary {
+    color: white;
+
+    border: 1px solid #333;
+
+    background: rgba(255,255,255,0.03);
+}
+
+.btn.secondary:hover {
+    border-color: #ff401c;
+    color: #ff704f;
+}
+
+.stats {
+    display: flex;
+    gap: 45px;
+
+    margin-top: 55px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat strong {
+    font-family: "Orbitron", sans-serif;
+    color: #ff4b25;
+    font-size: 24px;
+}
+
+.stat span {
+    margin-top: 4px;
+
+    color: #777;
+
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* HERO SYMBOL */
+
+.hero-symbol {
+    width: 390px;
+    height: 390px;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+}
+
+.hero-symbol::before,
+.hero-symbol::after {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    border: 1px solid rgba(255, 65, 25, 0.25);
+
+    transform: rotate(45deg);
+
+    animation: rotate 20s linear infinite;
+}
+
+.hero-symbol::after {
+    width: 230px;
+    height: 230px;
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+    animation-direction: reverse;
+}
+
+.hexagon {
+    width: 190px;
+    height: 220px;
+
+    clip-path: polygon(
+        25% 6%,
+        75% 6%,
+        100% 50%,
+        75% 94%,
+        25% 94%,
+        0 50%
+    );
+
+    background: linear-gradient(
+        135deg,
+        #ff4a21,
+        #57180c
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    box-shadow:
+        0 0 60px rgba(255, 65, 25, 0.3);
+
+    font-family: "Orbitron", sans-serif;
+}
+
+.hexagon span {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.hexagon small {
+    font-size: 11px;
+    letter-spacing: 6px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: 110px 9%;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    margin-bottom: 55px;
+}
+
+.section-title span {
+    font-family: "Orbitron", sans-serif;
+
+    color: #ff4a22;
+
+    font-size: 13px;
+}
+
+.section-title h2 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 30px;
+
+    letter-spacing: 1px;
+}
+
+.section-title h2 b {
+    color: #ff4a22;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.about-text h3 {
+    font-family: "Orbitron", sans-serif;
+
+    color: #ff4a22;
+
+    font-size: 25px;
+}
+
+.about-text p {
+    color: #999;
+
+    line-height: 1.9;
+
+    margin-top: 20px;
+
+    max-width: 650px;
+}
+
+.about-box {
+    min-height: 320px;
+
+    border: 1px solid rgba(255, 68, 30, 0.4);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 60, 20, 0.12),
+            rgba(0,0,0,0.2)
+        );
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 45px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.about-box::before {
+    content: "LX";
+
+    position: absolute;
+
+    right: -20px;
+    bottom: -70px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 200px;
+    font-weight: 900;
+
+    color: rgba(255, 255, 255, 0.025);
+}
+
+.about-box span {
+    color: #ff4a22;
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 13px;
+    letter-spacing: 5px;
+}
+
+.about-box h3 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 30px;
+
+    margin-top: 5px;
+}
+
+
+/* =========================
+   TOURNAMENT CARDS
+========================= */
+
+.tournament-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 20px;
+}
+
+.tournament-card {
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20, 23, 30, 0.96),
+            rgba(8, 10, 14, 0.96)
+        );
+
+    border: 1px solid #242832;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: 0.4s;
+}
+
+.tournament-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #ff4b25;
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: 0.4s;
+}
+
+.tournament-card:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(255, 65, 25, 0.55);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.5);
+}
+
+.tournament-card:hover::before {
+    transform: scaleX(1);
+}
+
+.tournament-card.featured {
+    border-color: rgba(255, 65, 25, 0.4);
+
+    box-shadow:
+        0 0 30px rgba(255, 65, 25, 0.08);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+
+    color: #777;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+}
+
+.live {
+    color: #ff4b25;
+}
+
+.card-icon {
+    margin-top: 35px;
+
+    font-size: 38px;
+
+    filter:
+        drop-shadow(0 0 10px rgba(255, 60, 20, 0.4));
+}
+
+.tournament-card h3 {
+    margin-top: 18px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+}
+
+.tournament-card p {
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 10px;
+
+    min-height: 42px;
+}
+
+.details {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 20px;
+
+    flex-wrap: wrap;
+}
+
+.details span {
+    padding: 6px 9px;
+
+    background: #151820;
+
+    border: 1px solid #252a33;
+
+    color: #aaa;
+
+    font-size: 9px;
+}
+
+.tournament-card button {
+    width: 100%;
+
+    margin-top: 25px;
+
+    padding: 12px;
+
+    border: 1px solid #ff4a22;
+
+    background: transparent;
+
+    color: #ff5a36;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.tournament-card button:hover {
+    background: #ff4a22;
+    color: white;
+
+    box-shadow:
+        0 0 20px rgba(255, 70, 25, 0.35);
+}
+
+
+
+/* =========================
+   MODES
+========================= */
+
+.mode-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 15px;
+}
+
+.mode {
+    padding: 30px 22px;
+
+    background: rgba(15, 18, 25, 0.85);
+
+    border-left: 2px solid #ff4a22;
+
+    transition: 0.3s;
+}
+
+.mode:hover {
+    transform: translateY(-5px);
+
+    background: rgba(255, 60, 20, 0.08);
+}
+
+.mode strong {
+    color: #ff4a22;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 12px;
+}
+
+.mode h3 {
+    margin-top: 18px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 17px;
+}
+
+.mode p {
+    color: #777;
+
+    font-size: 11px;
+
+    margin-top: 7px;
+}
+
+
+/* =========================
+   MAPS
+========================= */
+
+.map-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+.map-card {
+    min-height: 180px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171b23,
+            #080a0e
+        );
+
+    border: 1px solid #252a32;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: 0.3s;
+}
+
+.map-card::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 40%,
+            rgba(255, 60, 20, 0.1)
+        );
+
+    opacity: 0;
+
+    transition: 0.3s;
+}
+
+.map-card:hover {
+    border-color: #ff4a22;
+    transform: translateY(-5px);
+}
+
+.map-card:hover::before {
+    opacity: 1;
+}
+
+.map-card span {
+    color: #ff4a22;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 10px;
+}
+
+.map-card h3 {
+    margin-top: 8px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   WINNERS
+========================= */
+
+.winner-box {
+    max-width: 800px;
+
+    margin: auto;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255, 65, 25, 0.35);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 60, 20, 0.1),
+            transparent 60%
+        );
+}
+
+.trophy {
+    font-size: 60px;
+
+    filter:
+        drop-shadow(0 0 20px rgba(255, 150, 0, 0.4));
+}
+
+.winner-box h3 {
+    margin-top: 20px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 25px;
+}
+
+.winner-box p {
+    margin-top: 10px;
+
+    color: #777;
+}
+
+.winner-line {
+    width: 80px;
+    height: 2px;
+
+    margin: 25px auto;
+
+    background: #ff4a22;
+
+    box-shadow: 0 0 15px #ff4a22;
+}
+
+.winner-box > span {
+    color: #ff4a22;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   RULES
+========================= */
+
+.rules-container {
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.rule {
+    display: flex;
+    gap: 25px;
+
+    padding: 25px 0;
+
+    border-bottom: 1px solid #20242c;
+}
+
+.rule > span {
+    color: #ff4a22;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 13px;
+}
+
+.rule h3 {
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 15px;
+}
+
+.rule p {
+    color: #777;
+
+    margin-top: 7px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+    margin: 60px 9% 100px;
+
+    padding: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255, 62, 24, 0.15),
+            rgba(10, 12, 17, 0.8)
+        );
+
+    border: 1px solid rgba(255, 62, 24, 0.3);
+}
+
+.cta span {
+    color: #ff4a22;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+.cta h2 {
+    margin-top: 10px;
+
+    font-family: "Orbitron", sans-serif;
+
+    font-size: 30px;
+}
+
+.cta h2 b {
+    color: #ff4a22;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 60px 9% 35px;
+
+    text-align: center;
+
+    border-top: 1px solid #20242c;
+
+    background: rgba(2, 4, 7, 0.9);
+}
+
+.footer-logo {
+    font-family: "Orbitron", sans-serif;
+
+    font-weight: 900;
+
+    font-size: 25px;
+}
+
+.footer-logo span {
+    color: #ff4a22;
+}
+
+footer p {
+    color: #666;
+
+    font-size: 12px;
+
+    margin-top: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+.footer-links a {
+    color: #888;
+
+    text-decoration: none;
+
+    font-size: 11px;
+}
+
+.footer-links a:hover {
+    color: #ff4a22;
+}
+
+.copyright {
+    margin-top: 35px;
+
+    color: #444;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+#toast {
+    position: fixed;
+
+    bottom: 25px;
+    left: 50%;
+
+    transform: translate(-50%, 100px);
+
+    padding: 14px 25px;
+
+    background: #171a20;
+
+    border: 1px solid #ff4a22;
+
+    color: white;
+
+    font-size: 12px;
+
+    z-index: 2000;
+
+    transition: 0.4s;
+}
+
+#toast.show {
+    transform: translate(-50%, 0);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes rotate {
+    from {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+
+        top: 78px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        background: rgba(5, 7, 11, 0.97);
+
+        display: none;
+        flex-direction: column;
+
+        gap: 22px;
+
+        border-bottom: 1px solid #ff4a22;
+    }
+
+    nav.show {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 140px 6% 80px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-symbol {
+        width: 100%;
+        height: 280px;
+
+        margin-top: 50px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .hero h2 {
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+
+    .hero p {
+        font-size: 13px;
+    }
+
+    .stats {
+        gap: 25px;
+    }
+
+    .section {
+        padding: 80px 6%;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .map-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .cta {
+        margin: 40px 6% 70px;
+
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 25px;
+
+        padding: 35px 25px;
+    }
+
+    .cta h2 {
+        font-size: 22px;
+    }
+
+}
+
+
+/* SMALL PHONES */
+
+@media (max-width: 500px) {
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .stats {
+        justify-content: space-between;
+
+        width: 100%;
+    }
+
+    .stat strong {
+        font-size: 19px;
+    }
+
+    .map-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 21px;
+    }
+
+    .about-box h3 {
+        font-size: 24px;
+    }
+
+}
